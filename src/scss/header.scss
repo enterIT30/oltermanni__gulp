@@ -1,0 +1,223 @@
+.header {
+  position: relative;
+  z-index: 100;
+  padding-top: 25px;
+  padding-bottom: 17px;
+  background-color: $lightColor;
+  transition: margin 0.3s ease 0s;
+  @media (max-width:$mobileSmall){
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  &__container {
+    display: flex;
+    align-items:center;
+    justify-content:space-between;
+    column-gap: 15px;
+    font-size: 16px;
+    line-height: math.div(21 , 16);
+    font-style: normal;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  &__logo {
+    display: block;
+    flex: 0 1 170px;
+    height: 27px;
+    img {
+      width: 100%;
+    }
+    @media (max-width:$mobile){
+      order:1;
+    }
+    @media (max-width:$mobileSmall){
+      flex: 0 1 136px;
+      height: 21px;
+      margin-right: auto;
+    }
+  }
+
+  &__menu {
+    flex: 0 1 352px;
+    @media (max-width:$mobile){
+      flex: 0 1 content;
+    }
+  }
+
+  &__login-buttons {
+    @media (max-width:$mobile){
+      order:1;
+    }
+  }
+}
+
+
+.menu {
+
+  &__body {
+    @media (max-width:$mobile){
+      background-color: $orangeColor;
+      position: absolute;
+      left: 0;
+      top: -100%;
+      top: 83px;
+      z-index: 99;
+      padding: 0 20px 0;
+      min-width: 100%;
+      height: 0;
+      overflow: hidden;
+      transition: height 0.3s ease 0s;
+      box-shadow: 0px 10px 15px -15px #111;
+      &.open-menu {
+        transition: all 0.3s ease 0s;
+        height: auto;
+      }
+    }
+    @media (max-width:$mobileSmall){
+      top: 63px;
+    }
+  }
+
+  &__main-list {
+    display: flex;
+    justify-content:space-between;
+    @media (max-width:$mobile){
+      //display: none;
+      flex-direction: column;
+      row-gap: 20px;
+      padding: 25px 0;
+      border-bottom: 1px solid #ecb200;
+    }
+  }
+
+  &__call-list {
+    display: none;
+    @media (max-width:$mobile){
+      display: flex;
+      flex-direction: column;
+      row-gap: 15px;
+      padding: 25px 0;
+      border-bottom: 1px solid #ecb200;
+    }
+  }
+
+  &__social-list {
+    display: none;
+    @media (max-width:$mobile){
+      display: block;
+      padding: 25px 0 36px;
+    }
+  }
+}
+
+.icon-menu {
+  display: none;
+  position: relative;
+  width: 23px;
+  height: 17px;
+  cursor: pointer;
+  z-index: 100;
+  transition: all 0.3s ease 0s;
+  @media (max-width:$mobile){
+    display: block;
+  }
+  &:hover {
+    span,
+    &::before,
+    &::after {
+      background-color: $orangeColor;
+    }
+  }
+  span,
+  &::before,
+  &::after {
+    content: "";
+    transition: all 0.3s ease 0s;
+    right: 0;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: $darkColor;
+    border-radius: 2px;
+  }
+  &::before {
+    top: 0;
+  }
+  &::after {
+    bottom: 0;
+  }
+  span {
+    top: calc(50% - 1px);
+  }
+  &.open-menu {
+    &::before,
+    &::after {
+      background-color: $darkColor;
+    }
+    span {
+      width: 0;
+    }
+    &::before {
+      top: calc(50% - 1px);
+      transform: rotate(-45deg);
+    }
+    &::after {
+      bottom: calc(50% - 1px);
+      transform: rotate(45deg);
+    }
+  }
+}
+
+.login-buttons {
+  flex: 0 1 227px;
+  display: flex;
+  justify-content:space-between;
+  align-items:center;
+  @media (max-width:$tablet){
+    justify-content: end;
+    flex: 0 1 content;
+  }
+  &__login {
+    padding: 10px 42px;
+    background-color: $orangeColor;
+    border-radius: 29px;
+    transition: background-color 0.3s ease 0s;
+    &:hover {
+      background-color: $mainColor;
+      color: $lightColor;
+    }
+    @media (max-width:$mobileSmall){
+      padding: 6px 22px;
+    }
+  }
+
+  &__registration {
+    position: relative;
+    &::after{
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: $mainColor;
+      transition: width 0.3s ease 0s;
+    }
+    &:hover {
+      &::after{
+        width: 100%;
+      }
+    }
+    @media (max-width:$tablet){
+      display: none;
+    }
+  }
+
+  &__login,
+  &__registration {
+    font-weight: 600;
+    font-size: 16px;
+    text-transform: uppercase;
+  }
+}
